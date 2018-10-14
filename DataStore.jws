@@ -1,0 +1,58 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class DataStore {
+    private List<SessionKey> session_keys;
+    private String[][] currencies;
+
+    public DataStore() {
+        session_keys = new ArrayList<>();
+        currencies = new String[][] {
+            {"AUD", "USD", "0.7"},
+            {"AUD", "NZD", "1.09"},
+            {"AUD", "GBP", "0.55"}
+        };
+    }
+
+    protected void addKey(SessionKey key) {
+        session_keys.add(key);
+        System.out.println("DSTORE: Successfully stored new key");
+    }
+
+    protected boolean removeKey(String keyId) {
+        SessionKey k;
+        if ((k = searchKey(keyId)) != null) {
+            session_keys.remove(k);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    protected SessionKey searchKey(String keyId) {
+        System.out.println("SessionKeys length = " + this.session_keys.size());
+        for (SessionKey k: session_keys) {
+            System.out.println("DSTORE: key -> " + k.getKey());
+            if (k.getKey().equals(keyId)) {
+                return k;
+            }
+        }
+
+        return null;
+    }
+}
+
+/* private class Currency {
+    private String currency_code;
+
+    public Currency() {}
+
+    public Currency(String currency_code){
+        this.currency_code = currency_code;
+    }
+
+    public boolean setRate(double rate, String toCurrency_code) {
+
+    }
+} */
