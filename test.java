@@ -12,7 +12,8 @@ public class test {
         System.out.println("Logged in with auth key: " + authState);
         System.out.println(loginManager.logout(authState));
 
-        
+        db.addKey("Brad","test4");
+        System.out.println(db.getKeys());
         System.out.println(authManager.getStuff());
     }
 }

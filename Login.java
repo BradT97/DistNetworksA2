@@ -1,5 +1,3 @@
-import java.util.List;
-import java.util.ArrayList;
 
 public class Login
 {   
@@ -54,7 +52,6 @@ public class Login
     }
 
     private String keygen(String[][] accounts) {
-
         return "TeStK";
     }
 

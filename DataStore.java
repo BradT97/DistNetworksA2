@@ -1,6 +1,6 @@
-
-public class DataStore {
+public class DataStore implements java.io.Serializable {
     private String[][] session_keys, currencies;
+    private static final long serialVersionUID = 1;
 
     public DataStore() {
         session_keys = new String[0][2];
@@ -9,6 +9,11 @@ public class DataStore {
             {"AUD", "NZD", "1.09"},
             {"AUD", "GBP", "0.55"}
         };
+    }
+
+    public DataStore(String[][] session_keys, String[][] currencies) {
+        this.session_keys = session_keys;
+        this.currencies = currencies;
     }
 
     //      !!  Mutators  !!
@@ -59,7 +64,9 @@ public class DataStore {
     }
 
 
-
+    public String getKeys() {
+        return toString(session_keys);
+    }
 
 
     public boolean addCurrency(String from, String to) {
